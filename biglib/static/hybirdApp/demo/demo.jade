@@ -1,0 +1,23 @@
+html
+    head
+        script(src="/jquery/jquery-1.11.3.min.js")
+        link(rel="stylesheet", href="/hybirdApp/demo/demo.css")
+    body
+    
+        div.order
+            h2 所有操作会在Chrome的Console中显示其调用结果！
+            input(type="button" id="getUserInfo" value="获取用户信息")
+            input(type="button" value="设置分享" id="appShare")
+            input(type="button" value="已登录但未开卡，唤起开卡接口"  id="activeWallet")
+            input(type="button" value="设置toast提示信息" id="appToast")
+            input(type="button" value="设置alert提示信息" id="appAlert")
+            input(type="button" value="唤起登录" id="appLogin")
+            input(type="button" value="设置自定义标题" id="appTitle")
+            input(type="button" value="唤起购物车" id="appGoShopCar")
+            input(type="button" value="唤起支付功能" id="appCallPay")
+            input(type="button" value="唤起优惠券支付" id="appCallCouponPay")
+            input(type="button" value="唤起秒杀详情" id="secondKill")
+        
+        script(src="/small-spa/small-spa.js")
+        script(src="/hybirdApp/app.js")
+        script(src="/hybirdApp/demo/demo.js")
