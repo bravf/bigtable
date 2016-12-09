@@ -1,0 +1,125 @@
+/*#control-box{
+}*/
+
+#bigtable{
+    width: 800px;
+    margin: 10px auto;
+}
+
+#table-box{
+    position: relative;
+    width: 600px;
+    height: 400px;
+    margin: 10px auto;
+    overflow: hidden;
+
+    table{
+        margin: 0;
+    }
+
+    .freeze-vertical-line{
+        position: absolute;
+        top: 0;
+        width: 1px;
+        border: 1px solid palevioletred;
+        z-index: 4;
+    }
+
+    .top-left-table-box{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+    }
+
+    .top-table-box{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+
+        .placecholder{
+            position: absolute;
+            height: 1px;
+            left: 0;
+            top: 0;
+        }
+        table{
+            position: absolute;
+            top: 0;
+        }
+    }
+
+    .left-table-box{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        height: 1px;
+
+        .placeholder{
+            position: absolute;
+            width:1px;
+            left: 0;
+            top: 0;
+        }
+        table{
+            position: absolute;
+            left: 0;
+            border-right: 1px solid orangered;
+        }
+    }
+
+    .right-table-box{
+        position: absolute;
+        top: 0;
+
+        table{
+            position: absolute;
+        }
+
+        .top-placeholder{
+            width: 1px;
+        }
+        .left-placeholder{
+            height: 1px;
+        }
+    }
+
+    th,td{
+        background: #fff;
+        padding: 0;
+        font-size: 0;
+
+        width: 80px;
+
+        span{
+            display: inline-block;
+            width: 80px;
+            height: 30px;
+            white-space:nowrap; text-overflow:ellipsis; 
+            overflow: hidden;
+            text-align: center;
+            line-height: 30px;
+            font-size: 14px;
+        }
+    }
+
+    .scroller{
+        position: absolute;
+        background-color: #aaa;
+        border-radius: 6px;
+        opacity: 0.8;
+        //display: none;
+        z-index: 3;
+
+        &.right-scroller{
+            top: 0;
+            right: 0;
+        }
+        &.bottom-scroller{
+            bottom: 0;
+            left: 0;
+        }
+    }
+}

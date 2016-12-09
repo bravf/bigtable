@@ -1,0 +1,51 @@
+doctype html
+html
+    head
+        title bigtable
+        meta(charset="utf-8")
+        link(rel="stylesheet", href="../biglib/static/bootstrap/css/bootstrap.min.css")
+        link(rel="stylesheet", href="index.css")
+        script(src="../biglib/static/jquery/jquery-3.1.1.min.js")
+        script(src="../biglib/static/vue/vue-2.0.5.min.js")
+    body
+        div(id="table")
+
+            div(class="top-left-table")
+                table(class="table table-bordered")
+                    thead
+                        tr
+                            th(v-for="scheme in tableData.scheme.slice(0, 1)")
+                                span|{{scheme.title}}
+
+            div(class="top-table")
+                div(style="width:80px;height:1px;")
+                table(class="table table-bordered")
+                    thead
+                        tr
+                            th(v-for="scheme in tableData.scheme.slice(1)")
+                                span|{{scheme.title}}
+                    
+            div(class="left-table")
+                table(class="table table-bordered")
+                    //- thead
+                    //-     tr
+                    //-         th(v-for="scheme in tableData.scheme.slice(0,1)")
+                    //-             span|{{scheme.title}}
+                    tbody
+                        tr(v-for="data in tableData.data")
+                            td(v-for="value in data.slice(0,1)")
+                                span|{{value}}
+
+            div(class="right-table")
+                div(class="top-placeholder")
+                div(class="left-placeholder")
+                table(class="right-table-body table table-bordered")
+                    tbody
+                        tr(v-for="data in tableData.data")
+                            td(v-for="value in data.slice(1)")
+                                span|{{value}}
+            
+            <div class="right-scroller scroller"></div>
+            <div class="bottom-scroller scroller"></div>
+
+        script(src="./index.js")

@@ -1,0 +1,96 @@
+doctype html
+html
+    head
+        title bigtable
+        meta(charset="utf-8")
+        link(rel="stylesheet", href="../biglib/static/bootstrap/css/bootstrap.min.css")
+        link(rel="stylesheet", href="index.css")
+        script(src="../biglib/static/jquery/jquery-3.1.1.min.js")
+        script(src="../biglib/static/vue/vue-2.0.5.min.js")
+
+    body
+        div(id="bigtable")
+            div(id="control-box")
+                input(type="text", v-model="numbers.freezeNum")
+                    
+            div(id="table-box")
+
+                //- ###
+                div(
+                    class="freeze-vertical-line",
+                    :style="{height:numbers.boxHeight+'px', left:numbers.tdWidth*numbers.freezeNum+'px'}"
+                )
+
+                //- ###
+                div(class="top-left-table-box")
+                    table(class="table table-bordered")
+                        thead
+                            tr
+                                th(v-for="scheme in sourceData.scheme.slice(0, numbers.freezeNum)")
+                                    span|{{scheme.title}}
+
+                //- ###
+                div(
+                    class="top-table-box", 
+                    :style="{left:numbers.tableLeft+'px'}"
+                )
+                    div(
+                        class="placeholder", 
+                        :style="{width:numbers.tdWidth+'px'}"
+                    )
+                    table(
+                        class="table table-bordered", 
+                        :style="{left:numbers.tdWidth * numbers.freezeNum + 'px'}"
+                    )
+                        thead
+                            tr
+                                th(v-for="scheme in sourceData.scheme.slice(numbers.freezeNum)")
+                                    span|{{scheme.title}}
+                
+                //- ###
+                div(
+                    class="left-table-box", 
+                    :style="{width:numbers.tdWidth * numbers.freezeNum +'px', top:numbers.tableTop+'px'}"
+                )
+                    div(
+                        class="placeholder", 
+                        :style="{height:numbers.tdHeight+'px'}"
+                    )
+                    table(
+                        class="table table-bordered", 
+                        :style="{top:numbers.tdHeight+'px'}"
+                    )
+                        tbody
+                            tr(v-for="data in sourceData.data")
+                                td(v-for="value in data.slice(0, numbers.freezeNum)")
+                                    span|{{value}}
+
+                //- ####
+                div(class="right-table-box", :style="{top:numbers.tableTop+'px', left:numbers.tableLeft+'px'}")
+                    div(
+                        class="top-placeholder",
+                        :style="{height:numbers.tdHeight+'px'}"
+                    )
+                    div(
+                        class="left-placeholder",
+                        :style="{width:numbers.tdWidth * numbers.freezeNum + 'px'}"
+                    )
+                    table(
+                        class="right-table-body table table-bordered", 
+                        :style="{left:numbers.tdWidth * numbers.freezeNum + 'px', top:numbers.tdHeight+'px'}"
+                    )
+                        tbody
+                            tr(v-for="data in sourceData.data")
+                                td(v-for="value in data.slice(numbers.freezeNum)")
+                                    span|{{value}}
+                
+                div(
+                    class="right-scroller scroller",
+                    :style="{width:numbers.rightScrollerWidth+'px', height:numbers.rightScrollerHeight+'px', top:numbers.rightScrollerTop+'px'}", 
+                )
+                div(
+                    class="bottom-scroller scroller",
+                    :style="{width:numbers.bottomScrollerWidth+'px', height:numbers.bottomScrollerHeight+'px', left:numbers.bottomScrollerLeft+'px'}", 
+                )
+                
+        script(src="./index.js")

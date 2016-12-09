@@ -1,0 +1,26 @@
+#table{
+    position: relative;
+    width: 800px;
+    height: 600px;
+    border: 1px solid palevioletred;
+    margin: 50px auto;
+    overflow: hidden;
+
+    .scroller{
+        position: absolute;
+        background: gray;
+
+        &.bottom-scroller{
+            left: 0;
+            bottom: 0;
+            width: 200px;
+            height: 10px;
+        }
+        &.right-scroller{
+            right: 0;
+            top: 0;
+            width: 10px;
+            height: 200px;
+        }
+    }
+}

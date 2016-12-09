@@ -1,0 +1,45 @@
+{
+    "server": {
+        "port": 8080
+    },
+    "release": {
+        "project": "bigtable",
+        "domain": "",
+
+        "cases": {
+            "dev": {
+                "watch": true,
+                "version": false,
+                "optimize": false,
+                "env": {
+                    "ENV": "LOCAL"
+                }
+            },
+            "qa": {
+                "watch": false,
+                "version": false,
+                "optimize": false,
+                "www": "../__dist/"
+            },
+            "www": {
+                "watch": false,
+                "version": true,
+                "optimize": true
+            }
+        },
+
+        "copy": [
+            "**/*.min.js",
+            "**/*.min.css"
+        ],
+        "ignore": [
+            "fepack.json"
+        ],
+        "externals": {
+        }
+    },
+    "deploy": {
+        "beRelease": "",
+        "feReleaseGit": ""
+    }
+}
