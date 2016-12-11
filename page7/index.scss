@@ -1,0 +1,161 @@
+/*#control-box{
+}*/
+html,body{
+    height: 100%;
+}
+
+#bigtable{
+    //width: 800px;
+    margin: 0px auto;
+    // padding: 10px;
+}
+
+#table-box{
+    position: relative;
+    width: 600px;
+    height: 400px;
+    margin: 0px auto;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+
+    .div-table{
+        .div-table-row{
+            font-size: 0;
+        }
+        .div-table-cell{
+            font-size: 14px;
+            display: inline-block;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            padding-left: 4px;
+            background-color: #fff;
+            vertical-align: middle;
+            white-space:nowrap; text-overflow:ellipsis; 
+            overflow: hidden;
+        }
+        .div-table-cell2{
+            position: relative;
+
+            .div-table-cell-drag{
+                padding: 0 5px;
+                position: absolute;
+                top: 0;
+                right: -3px;
+                text-align: center;
+                background: #fff;
+                cursor: col-resize;
+
+                b{
+                    display: inline-block;
+                    width: 2px;
+                    height: 30px;
+                    background: cadetblue;    
+                }
+            }
+        }
+    }
+
+    .freeze-vertical-line{
+        position: absolute;
+        top: 0;
+        width: 1px;
+        border: 1px solid palevioletred;
+        z-index: 4;
+    }
+
+    .top-left-table-box{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+    }
+
+    .top-table-box{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+
+        .placecholder{
+            position: absolute;
+            height: 1px;
+            left: 0;
+            top: 0;
+        }
+        .div-table{
+            position: absolute;
+            top: 0;
+        }
+    }
+
+    .left-table-box{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        height: 1px;
+
+        .placeholder{
+            position: absolute;
+            width:1px;
+            left: 0;
+            top: 0;
+        }
+        .div-table{
+            position: absolute;
+            left: 0;
+        }
+    }
+
+    .right-table-box{
+        position: absolute;
+        top: 0;
+
+        .div-table{
+            position: absolute;
+        }
+
+        .top-placeholder{
+            width: 1px;
+        }
+        .left-placeholder{
+            height: 1px;
+        }
+    }
+
+    .scroller{
+        position: absolute;
+        background-color: #aaa;
+        border-radius: 6px;
+        opacity: 0.8;
+        //display: none;
+        z-index: 3;
+
+        &.right-scroller{
+            top: 0;
+            right: 0;
+        }
+        &.bottom-scroller{
+            bottom: 0;
+            left: 0;
+        }
+    }
+
+    .edit-input{
+        position: absolute;
+        display: inline-block;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        border-color: orangered;
+        z-index: 4;
+    }
+}

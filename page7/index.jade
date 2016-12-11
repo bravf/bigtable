@@ -1,0 +1,129 @@
+doctype html
+html
+    head
+        title bigtable
+        meta(charset="utf-8")
+        link(rel="stylesheet", href="../biglib/static/bootstrap/css/bootstrap.min.css")
+        link(rel="stylesheet", href="index.css")
+        script(src="../biglib/static/jquery/jquery-3.1.1.min.js")
+        script(src="../biglib/static/vue/vue-2.0.5.min.js")
+
+    body
+        div(id="bigtable")
+            //- div(id="control-box")
+            //-     input(
+            //-         type="text", 
+            //-         v-model.lazy="numbers.freezeNum", 
+            //-         placeholder="锁定列数")
+                
+            //-     input(
+            //-         type="text",
+            //-         v-model.lazy="numbers.tdWidth",
+            //-         placeholder="列宽度"
+            //-     )
+
+                    
+            div(
+                id="table-box",
+                :style="{width:numbers.boxWidth+'px', height:numbers.boxHeight+'px'}"
+            )
+
+                //- ###
+                div(
+                    class="freeze-vertical-line",
+                    :style="{height:numbers.boxHeight+'px', left:numbers.freezeWidth+'px'}"
+                )
+
+                //- ###
+                div(class="top-left-table-box")
+                    div(class="div-table")
+                        div(class="div-table-row")
+                            span(
+                                class="div-table-cell div-table-cell2",
+                                :style="{width:scheme.width+'px'}",
+                                v-for="scheme in sourceData.scheme.slice(0, numbers.freezeNum)",
+                                :data-cell-idx="scheme.cellIdx",
+                                :data-row-idx="-1"
+                            )| {{scheme.title}}
+                                span(class="div-table-cell-drag")
+                                    b
+
+                //- ###
+                div(
+                    class="top-table-box", 
+                    :style="{left:numbers.tableLeft+'px'}"
+                )
+                    div(
+                        class="div-table", 
+                        :style="{left:numbers.freezeWidth+'px', width:numbers.tableWidth-numbers.freezeWidth+'px', height:numbers.tdHeight+'px'}"
+                    )
+                        div(class="div-table-row")
+                            span(
+                                class="div-table-cell div-table-cell2",
+                                :style="{width:scheme.width+'px'}",
+                                v-for="scheme in sourceData.scheme.slice(numbers.freezeNum)",
+                                :data-cell-idx="scheme.cellIdx",
+                                :data-row-idx="-1"
+                            )| {{scheme.title}}
+                                span(class="div-table-cell-drag")
+                                    b
+                
+                //- ###
+                div(
+                    class="left-table-box", 
+                    :style="{width:numbers.freezeWidth+'px', top:numbers.tableTop2+'px'}"
+                )
+                    div(
+                        class="div-table", 
+                        :style="{top:numbers.tdHeight+'px'}"
+                    )
+                        div(
+                            class="div-table-row",
+                            v-for="(data,ridx) in sourceData.data"
+                        )
+                            span(
+                                class="div-table-cell",
+                                :style="{width:sourceData.scheme[cidx].width+'px'}",
+                                v-for="(value,cidx) in data.slice(0, numbers.freezeNum)",
+                                :data-cell-idx="cidx",
+                                :data-row-idx="ridx+1"
+                            )| {{value}}
+
+                //- ####
+                div(class="right-table-box", :style="{top:numbers.tableTop2+'px', left:numbers.tableLeft+'px'}")
+                    div(
+                        class="right-table-body div-table", 
+                        :style="{left:numbers.freezeWidth+'px', top:numbers.tdHeight+'px', width:numbers.tableWidth-numbers.freezeWidth+'px'}"
+                    )
+                        div(
+                            class="div-table-row",
+                            v-for="(data,ridx) in sourceData.data"
+                        )
+                            span(
+                                class="div-table-cell",
+                                :style="{width:sourceData.scheme[cidx+numbers.freezeNum].width+'px'}",
+                                v-for="(value,cidx) in data.slice(numbers.freezeNum)",
+                                :data-cell-idx="cidx+numbers.freezeNum",
+                                :data-row-idx="ridx+1",
+                                @dblclick="cellDbclick($event)"
+                            )| {{value}}
+                
+                div(
+                    class="right-scroller scroller",
+                    :style="{width:numbers.rightScrollerWidth+'px', height:numbers.rightScrollerHeight+'px', top:numbers.rightScrollerTop+'px'}", 
+                )
+                div(
+                    class="bottom-scroller scroller",
+                    :style="{width:numbers.bottomScrollerWidth+'px', height:numbers.bottomScrollerHeight+'px', left:numbers.bottomScrollerLeft+'px'}", 
+                )
+
+                //- ### 编辑框
+                input(
+                    class="edit-input",
+                    v-show="numbers.editInputX!=0 && numbers.editInputY!=0",
+                    :style="{left:getSomeCellWidth(0,numbers.editInputX)+'px', top:numbers.tdHeight*numbers.editInputY+'px', width:sourceData.scheme[numbers.editInputX].width+'px'}",
+                    v-model="numbers.editInputVal",
+                    @blur="editInputBlur"
+                )
+                
+        script(src="./index.js")
