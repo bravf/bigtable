@@ -10,7 +10,7 @@ tableData.scheme.forEach((_, idx)=>{
 })
 
 // 复制多行data
-for (let i = 0; i < 300; i++) {
+for (let i = 0; i < 3000; i++) {
     tableData.data.push(JSON.parse(JSON.stringify(tableData.data[0])))
 }
 tableData.data.forEach((_, i) => {
